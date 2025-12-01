@@ -254,7 +254,14 @@ footer {
     color: var(--accent-2);
 }
 
+#top-header {
+    display: block;
+}
+
 @media (max-width:700px) {
+    #top-header {
+        display: none;
+    }
     .pet-area {
         flex-direction: column;
     }
