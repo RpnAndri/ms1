@@ -1,0 +1,264 @@
+
+/* ---------- THEME: edit CSS variables in :root to customize ---------- */
+:root {
+    --bg: #f6fbff;
+    --card: #ffffff;
+    --text: #033049;
+    --muted: #5b7a86;
+    --accent: #2aa198;
+    --accent-2: #2b7cff;
+    --success: #2fbf71;
+    --danger: #e76f51;
+    --glass: rgba(255,255,255,0.7);
+    --radius: 12px;
+    --shadow: 0 6px 18px rgba(3,48,73,0.08);
+    --transition: 200ms ease;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+* {
+    box-sizing:border-box
+}
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.45;
+}
+
+.app {
+    max-width: 1100px;
+    margin: 28px auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mark {
+    width: 48px;
+    height: 48px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+h1 {
+    margin:0;
+    font-size:20px;
+}
+
+nav {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+}
+.nav-btn {
+    background: transparent;
+    border: 0;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--muted);
+    font-weight: 600;
+    transition: var(--transition);
+}
+.nav-btn.active, .nav-btn:hover {
+    background: var(--card);
+    box-shadow: var(--shadow);
+    color: var(--text);
+}
+
+main {
+    margin-top:18px;
+}
+
+.grid {
+    display:grid;
+    gap:16px;
+}
+
+.card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: var(--shadow);
+}
+.muted {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* Listing cards */
+.resort-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+    gap: 14px;
+}
+.resort { 
+    padding: 14px;
+    border-radius:10px;
+    background: linear-gradient(180deg,rgba(255,255,255,0.98),var(--glass));
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.resort h3 {
+    margin: 0;
+}
+
+.star {
+  color: gold;
+  font-size: 1.2em;
+}
+
+.top {
+    height: 70%;
+    width: auto;
+}
+.bottom {
+    height: 30%;
+}
+.resort-img {
+    width: 100%;
+    height: 100%;
+}
+.badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.badge {
+    padding: 6px 8px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 12px;
+    background: rgba(43,124,255,0.09);
+    color: var(--accent-2);
+}
+
+.controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+input[type=range]{width:120px}
+
+/* Activity list */
+.activity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 12px;
+}
+.activity {
+    padding: 12px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.top-activity {
+    height: 50%;
+}
+
+.bottom-activity {
+    height: 50%;
+}
+
+/* Rating form */
+label {
+    display: block;
+    margin-top: 8px;
+    font-weight: 600;
+}
+select, input[type=number], textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #e6eef3;
+    margin-top: 6px;
+}
+.row {
+    display: flex;
+    gap: 8px;
+}
+
+/* Pet page */
+.pet-area {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+.pet-card {
+    flex: 0 0 340px;
+}
+.pet-scene {
+    height: 220px;
+    border-radius: 10px;
+    background: linear-gradient(180deg,#dff7f2,#e6fbff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 -12px 30px rgba(0,0,0,0.03);
+}
+.meter {
+    height: 18px;
+    background: #e6eef3;
+    border-radius: 999px;
+    overflow: hidden;
+}
+.meter > i {
+    display: block;
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(90deg,var(--accent),var(--accent-2));
+    transition: width 400ms ease;
+}
+
+footer {
+    margin-top: 24px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* small helpers */
+.hint {
+    font-size: 13px;
+    color: var(--muted);
+}
+.btn {
+    background: var(--accent);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+}
+.btn.alt {
+    background: transparent;
+    border: 1px solid var(--accent-2);
+    color: var(--accent-2);
+}
+
+@media (max-width:700px) {
+    .pet-area {
+        flex-direction: column;
+    }
+    .pet-card {
+        width: 100%;
+    }
+}

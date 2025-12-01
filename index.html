@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MariBuddy</title>
+  <link rel="icon" href="./img/logo.png">
+  <link rel="stylesheet" href="./styles.css">
+  
+</head>
+<body>
+  <div class="app card">
+    <header>
+      <div class="logo">
+        <img src="./img/logo.png" alt="Image of the logo" class="mark">
+        <div>
+          <h1>MariBuddy — Sustainable Stays Guide</h1>
+          <div class="muted">Rate resorts, pick eco-activities, and grow your marine buddy</div>
+        </div>
+      </div>
+
+      <nav>
+        <button class="nav-btn active" data-page="home">Home</button>
+        <button class="nav-btn" data-page="list">Resorts</button>
+        <button class="nav-btn" data-page="activities">Activities</button>
+        <button class="nav-btn" data-page="rate">Rate</button>
+        <button class="nav-btn" data-page="pet">My Pet</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HOME -->
+      <section id="home" class="grid">
+        <div class="card">
+          <h2>Welcome to MariBuddy</h2>
+          <p class="muted">Discover eco-friendly resorts in Palawan, learn how activities affect reefs, and help your marine buddy thrive by choosing sustainable options while you travel.</p>
+          <div style="margin-top:12px;display:flex;gap:8px">
+            <button class="btn" data-goto="list">Explore Resorts</button>
+            <button class="btn alt" data-goto="activities">Learn About Activities</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Quick Summary</h3>
+          <div style="display:flex;gap:12px;margin-top:10px">
+            <div>
+              <div style="font-weight:800;font-size:18px">3</div>
+              <div class="muted">Featured Resorts</div>
+            </div>
+            <div>
+              <div style="font-weight:800;font-size:18px" id="global-health">30%</div>
+              <div class="muted">Global Pet Health (community)</div>
+            </div>
+            <div>
+              <div style="font-weight:800;font-size:18px">Palawan</div>
+              <div class="muted">Focus Area</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESORT LIST -->
+      <section id="list" class="grid" style="display:none">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h2>Resorts & Stays</h2>
+            <div>
+              <label class="hint">Theme color</label>
+              <input type="color" id="themeColor" value="#2aa198" />
+            </div>
+          </div>
+          <p class="muted">Click a resort to view details and rate them.</p>
+
+          <div style="margin-top:12px" class="resort-list" id="resortList"></div>
+        </div>
+      </section>
+
+      <!-- ACTIVITIES -->
+      <section id="activities" class="grid" style="display:none">
+        <div class="card">
+          <h2>Activities & Their Impacts</h2>
+          <p class="muted">See how common beach and water activities affect reefs and what eco-friendly alternatives exist.</p>
+          <div style="margin-top:12px" class="activity-grid" id="activityGrid"></div>
+        </div>
+      </section>
+
+      <!-- RATE PAGE -->
+      <section id="rate" class="grid" style="display:none">
+        <div class="card">
+          <h2>Rate a Resort or Activity</h2>
+          <p class="muted">Your ratings and choices affect your marine pet's health — choose eco options to boost it!</p>
+
+          <form id="ratingForm">
+            <label for="resortSelect">Select Resort/Activity</label>
+            <select id="resortSelect"></select>
+
+            <div class="row">
+              <div style="flex:1">
+                <label>Relies on renewable sources of energy (0-5)</label>
+                <input type="number" min="0" max="5" value="0" />
+              </div>
+              <div style="flex:1">
+                <label>Promotes the use of sustainable materials (0-5)</label>
+                <input type="number" min="0" max="5" value="0" />
+              </div>
+            </div>
+            <div class="row">
+              <div style="flex:1">
+                <label>Avoids or minimizes environmental disturbance (0-5)</label>
+                <input type="number" min="0" max="5" value="0" />
+              </div>
+              <div style="flex:1">
+                <label>Practices proper waste management (0-5)</label>
+                <input type="number" min="0" max="5" value="0" />
+              </div>
+            </div>
+            <div class="row">
+              <div style="flex:1">
+                <label>Suited for long-term use (0-5)</label>
+                <input type="number" min="0" max="5" value="0" />
+              </div>
+            </div>
+
+            <!-- <label>Activities used while staying (choose all that apply)</label>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px" id="actChecks"></div> -->
+
+            <label>Comments (optional)</label>
+            <textarea id="comment" rows="3" placeholder="Suggestions for the resort/activity..."></textarea>
+
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <button class="btn" type="submit">Submit Rating</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- PET PAGE -->
+      <section id="pet" class="grid" style="display:none">
+        <div class="card pet-area">
+          <div class="pet-card">
+            <h2>Sharko</h2>
+            <div class="pet-scene" id="petScene">
+              <!-- simple pet svg -->
+              <svg id="petSvg" width="180" height="140" viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+                <g id="reefGroup"></g>
+                <g id="fishGroup" transform="translate(30,40)">
+                  <g id="fishBody">
+                    <ellipse cx="40" cy="30" rx="28" ry="18" fill="#ffb4a2" />
+                    <polygon points="64,30 80,22 80,38" fill="#ff9b7a" />
+                    <circle cx="30" cy="26" r="3" fill="#222" />
+                  </g>
+                </g>
+              </svg>
+            </div>
+
+            <div style="margin-top:12px">
+              <div class="muted">Pet health</div>
+              <div class="meter" style="margin-top:6px"><i id="petMeter" style="width:40%"></i></div>
+              <div class="hint" style="margin-top:6px">Keep the reef healthy by choosing eco-friendly resorts and activities.</div>
+            </div>
+          </div>
+
+          <div style="flex:1">
+            <div class="card">
+              <h3>Pet Status</h3>
+              <p id="petText" class="muted">Your buddy is okay. Feed it eco-actions to make it thrive.</p>
+
+              <div style="margin-top:12px">
+                <strong>Stats</strong>
+                <div style="display:flex;gap:8px;margin-top:8px">
+                  <div style="flex:1">
+                    <div class="muted">Happiness</div>
+                    <div style="font-weight:700" id="petHappy">50</div>
+                  </div>
+                  <div style="flex:1">
+                    <div class="muted">Cleanliness</div>
+                    <div style="font-weight:700" id="petClean">50</div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top:12px">
+                <strong>Actions</strong>
+                <div style="display:flex;gap:8px;margin-top:8px">
+                  <button class="new-btn btn" data-page="rate">Rate (+5)</button>
+                  <button class="new-btn btn alt" id="doQuest" data-page="activities">Do a Quest (+3)</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top:12px">
+              <h3>Community Reef</h3>
+              <p class="muted">An aggregate health meter based on all app users</p>
+              <div class="meter" style="margin-top:6px"><i id="globalMeter" style="width:30%"></i></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="muted">Prototype • MariBuddy • MS 1</footer>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>
